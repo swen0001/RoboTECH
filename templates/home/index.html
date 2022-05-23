@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+{% load static %}
+<header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{% static 'assets/img/robot1.svg' %}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">RoboTech</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div><div class="divider-custom-line"></div>
+                    <br><br>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div><div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Arduino   -   Lego   -   Raspberry Pi</p>
+            </div>
+        </header>
+<section class="page-section bg-dark text-white mb-0">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">Video</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="/video/create">
+                        <i class="fas fa-download me-2"></i>
+                        New video +
+                    </a>
+                </div>
+            </div>
+        </section>
+<section class="page-section portfolio my_body">
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for post in page_obj %}
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="card" style="width: auto;">
+                        <div class="card-body">
+                            <video width="320" height="240" style="margin: 0px 10% 15px 8.5%" controls>
+                                <source src="../../media/{{ post.video }}" type="video/mp4">
+                                File not found.
+                            </video>
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <a href="/video/details/{{ post.id }}" class="btn btn-primary" style="margin: 0px 35% ">More info</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+<div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="/video">
+                        <i class="fas fa-video me-2"></i>
+                        All Video
+                    </a>
+                </div>
+</section>
+
+<style>
+          .my_body {
+      margin-top: -80px;
+      background-size: cover;
+      min-height: 90vh;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(36, 35, 35);
+}
+
+.card {
+    background-color: rgb(46, 45, 45);
+    color: white;
+    justify-content: center;
+    margin: 10px;
+}
+</style>
+
+{% endblock content %}

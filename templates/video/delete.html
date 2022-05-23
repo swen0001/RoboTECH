@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="my_body">
+ <div class="card">
+     <h2 style="color: white">Delete Video</h2>
+    <hr>
+<div class="main-box container text-center mt-5">
+    <h4 style="color: red">Are you going to delete the video: </h4>
+    <div><video width="300" height="170" class="video-fluid" src="../../media/{{ post.video }}" type="video/mp4" controls></video></div>
+    <h5 style="color: darkcyan">
+        {{ post.title }} (source: {{ post.source }}) ???
+    </h5>
+    <h4 style="color: darkcyan; margin-top: 20px">Confirm the deletion: </h4>
+    <form action="/video/delete/{{ post.id }}" method="post" style="margin: 15px 10px">
+        {% csrf_token %}
+        <div class="btn-group">
+         <div class="row lower">
+             <div><a href="/video/details/{{ post.id }}" class="btn btn-outline-warning btn1"><i class="fa fa-reply my_i1"></i>Back</a></div>
+         </div>
+         <div class="row lower">
+             <div>
+                 <button type="submit" class="btn btn-outline-danger btn1">Delete<i class="fa fa-trash my_i2"></i></button>
+             </div>
+         </div>
+     </div>
+    </form>
+    </div>
+     </div>
+</div>
+<style>
+    .my_body {
+      margin: 0;
+      background-size: cover;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(36, 35, 35);
+}
+
+.card {
+    width: 85%;
+    margin: 5% 0;
+    padding: 2rem 3rem;
+    background-color: rgb(46, 45, 45);
+    color: white;
+}
+    body {
+        background-color: rgb(36, 35, 35);
+    }
+    .btn1 {
+    margin: 2% 8px;
+    width: 100px;
+}
+.my_i1 {
+    margin-right: 10px;
+}
+.my_i2 {
+    margin-left: 10px;
+}
+</style>
+{% endblock content %}

@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="my_body">
+ <div class="card">
+     <h2 style="color: white">Add a new Video</h2>
+    <hr>
+<div class="main-box container text-center mt-5">
+    <form action="/video/create" method="post" style="margin: -15px 10px" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div id="form_template">
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        <div>{{ field }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        <div class="btn-group">
+            <div class="row lower">
+             <div><a href="/video" class="btn btn-outline-warning btn1"><i class="fa fa-reply my_i1"></i>Back</a></div>
+         </div>
+         <div class="row lower">
+             <div>
+                 <button type="submit" class="btn btn-outline-success btn1">Send<i class="fa fa-save my_i2"></i></button>
+             </div>
+         </div>
+         <div class="row lower">
+             <div>
+                 <button type="reset" class="btn btn-outline-danger btn1">Cancel<i class="fa fa-times my_i2"></i></button>
+             </div>
+         </div>
+        </div>
+    </form>
+    </div>
+     </div>
+</div>
+<style>
+    .my_body {
+      margin: 0;
+      background-size: cover;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(36, 35, 35);
+}
+
+.card {
+    width: 85%;
+    margin: 5% 0;
+    padding: 2rem 3rem;
+    background-color: rgb(46, 45, 45);
+    color: white;
+}
+.form-group input {
+        width: 50%;
+        height: 30px;
+        margin-bottom: 15px;
+    }
+    .form-group textarea {
+        width: 50%;
+    }
+body {
+        background-color: rgb(36, 35, 35);
+    }
+.btn1 {
+    margin: 2% 8px;
+    width: 100px;
+}
+.btn-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.my_i1 {
+    margin-right: 10px;
+}
+.my_i2 {
+    margin-left: 10px;
+}
+</style>
+{% endblock content %}
